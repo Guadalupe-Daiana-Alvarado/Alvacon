@@ -1,0 +1,58 @@
+{% include "sitio/cabecera.html" %} 
+
+<div class="card">
+    <img style="object-fit: cover; " height="450" class="card-img-top" src="https://firebasestorage.googleapis.com/v0/b/fir-multer-822ac.appspot.com/o/images%2FAlvacon%20(8).png?alt=media&token=01e61ff8-d127-4a37-a0db-d3e487869122" alt="Title">
+    <div class="card-body">
+        <h4 class="card-title">Alvacon 2023.</h4>
+        <p class="card-text">Somos una empresa joven especializada en ventas en línea, comprometida a satisfacer todas tus necesidades. Aunque nuestra principal oferta se centra en productos de maquinaria, estamos listos para conseguir todo lo que necesites. Nuestro enfoque está en proporcionar soluciones a medida para cada cliente, brindando productos de alta calidad y un servicio excepcional. Estamos aquí para facilitar tus compras en línea y asegurarnos de que encuentres exactamente lo que estás buscando. Tu satisfacción es nuestra prioridad.</p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Contactactate con nostros: </h4>
+
+        
+        <div class="card bg-info bg-gradient" style="--bs-bg-opacity: .7;">
+            <div class="card-body">
+                <form action="/admin/productos/guardar" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="txtNombre" class="form-label">Nombre:</label>
+                      <input type="text"
+                        class="form-control" name="txtNombre" id="txtNombre" aria-describedby="helpId" placeholder="Ingrese su nombre">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="Ingrese su nombre">
+                      </div>
+
+                    <div class="mb-3">
+                        <label for="txtImagen" class="form-label">Imagen del producto de referencia si la tiene:</label>
+                        <input type="file"
+                          class="form-control" name="txtImagen" id="txtImagen" aria-describedby="helpId" placeholder="Ingrese la imagen del producto">
+                        </div>
+
+                      <div class="mb-3">
+                        <label for="txtDescripcion" class="form-label">Descripcion del producto:</label>
+                        <input type="text"
+                          class="form-control" name="txtDescripcion" id="txtDescripcion" aria-describedby="helpId" placeholder="Ingrese la descipcion del producto">
+                        </div>
+
+                      <div class="mb-3">
+                        <label for="txtPrecio" class="form-label">Comentario de consulta:</label>
+                        <input type="text" class="form-control" name="txtPrecio" id="txtPrecio" aria-describedby="helpId" placeholder="Ingrese su consulta">
+                        </div>
+                        
+                        <div class="card-footer text-muted">
+                             <button type="submit" class="btn btn-primary">Enviar</button>    
+                        </div>                            
+
+                </form>
+            </div>
+
+         </div>       
+         </div>
+    </div>
+</div>
+
+{% include "sitio/pie.html" %} 
