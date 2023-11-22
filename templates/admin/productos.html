@@ -1,0 +1,111 @@
+ {% include "admin/cabecera.html" %} 
+<div>
+    PRODUCTOS
+ </div>
+ <br/>
+ <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="card bg-info bg-gradient" style="--bs-bg-opacity: .7;">
+                <div class="card-header">
+                    Datos de los productos
+                </div>
+
+
+                <div class="card-body">
+                    <form action="/admin/productos/guardar" method="post" enctype="multipart/form-data">
+                        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+                        <div class="mb-3">
+                          <label for="txtNombre" class="form-label">Nombre del producto:</label>
+                          <input type="text"
+                            class="form-control" name="txtNombre" id="txtNombre" aria-describedby="helpId" placeholder="Ingrese el nombre del producto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="txtImagen" class="form-label">Imagen del producto:</label>
+                            <input type="file"
+                              class="form-control" name="txtImagen" id="txtImagen" aria-describedby="helpId" placeholder="Ingrese la imagen del producto">
+                            </div>
+
+                          <div class="mb-3">
+                            <label for="txtDescripcion" class="form-label">Descripcion del producto:</label>
+                            <input type="text"
+                              class="form-control" name="txtDescripcion" id="txtDescripcion" aria-describedby="helpId" placeholder="Ingrese la descipcion del producto">
+                            </div>
+
+                          <div class="mb-3">
+                            <label for="txtPrecio" class="form-label">Precio del producto:</label>
+                            <input type="text"
+                              class="form-control" name="txtPrecio" id="txtPrecio" aria-describedby="helpId" placeholder="Ingrese el precio del producto">
+                            </div>
+                            
+                            <div class="card-footer text-muted">
+                                 <button type="submit" class="btn btn-primary">Agregar</button>    
+                            </div>                            
+
+                    </form>
+                </div>
+
+             </div>       
+        </div>
+
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-info table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Acciones</th>
+
+
+ 
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for producto in productos  %}
+                        <tr class="">
+                            <td scope="row">{{producto[0]}}</td>
+                            <td>{{producto[1]}}</td>
+                            <td>
+                                <img width="60" src="/uploads/{{producto[2]}}" class="img-fluid rounded-top" alt="">
+                            </td>
+                            <td>{{producto[3]}}</td>
+                            <td>{{producto[4]}}</td>
+                            <td>
+                                <form action="/admin/productos/borrar" method="post">
+                                    <input style="height: 25px; width:25px; display: none" value={{producto[0]}} type="text" name="txtID" id="txtID">
+                                    <button onclick="return confirm('Desea borrar el producto?')" type="submit" name="" id="" class="btn btn-danger">Eliminar</button>                              
+                                </form>  
+                                <form action="/admin/productos/borrar" method="post">
+                                    <input style="height: 25px; width:25px; display: none" value={{producto[0]}} type="text" name="txtID" id="txtID">
+                                    <a class="btn btn-success" href="/edit/{{producto[0]}}">Editar</a>
+                                </form>                                                        
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+ </div>
+
+ {% include "admin/pie.html" %} 
